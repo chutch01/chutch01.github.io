@@ -1,0 +1,6 @@
+C:\Users\chutc_000\Documents\Visual Studio 2013\Projects\COMP2068-SideScrollerAssignmentv2.1\COMP2068-ScrollerAssignmentv2\bin\COMP2068-CreateJSBoilerPlate.dll.config
+C:\Users\chutc_000\Documents\Visual Studio 2013\Projects\COMP2068-SideScrollerAssignmentv2.1\COMP2068-ScrollerAssignmentv2\bin\COMP2068-CreateJSBoilerPlate.dll
+C:\Users\chutc_000\Documents\Visual Studio 2013\Projects\COMP2068-SideScrollerAssignmentv2.1\COMP2068-ScrollerAssignmentv2\bin\COMP2068-CreateJSBoilerPlate.pdb
+C:\Users\chutc_000\Documents\Visual Studio 2013\Projects\COMP2068-SideScrollerAssignmentv2.1\COMP2068-ScrollerAssignmentv2\obj\Debug\COMP2068-ScrollerAssignmentv2.csprojResolveAssemblyReference.cache
+C:\Users\chutc_000\Documents\Visual Studio 2013\Projects\COMP2068-SideScrollerAssignmentv2.1\COMP2068-ScrollerAssignmentv2\obj\Debug\COMP2068-CreateJSBoilerPlate.dll
+C:\Users\chutc_000\Documents\Visual Studio 2013\Projects\COMP2068-SideScrollerAssignmentv2.1\COMP2068-ScrollerAssignmentv2\obj\Debug\COMP2068-CreateJSBoilerPlate.pdb
