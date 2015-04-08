@@ -14,6 +14,7 @@ var states;
     var Play = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function Play() {
+            this.lasers = [];
             this.enemies = [];
             createjs.Sound.play("brinstar", { loop: -1 });
             // Instantiate Game Container
@@ -24,14 +25,19 @@ var states;
             // Add island to game
             this.ball = new objects.Ball();
             this.game.addChild(this.ball);
+            //add scoreboard to the game
+            this.scoreboard = new objects.ScoreBoard(this.game);
             // Add plane to game
-            this.samus = new objects.Samus();
+            this.samus = new objects.Samus(this.game);
             this.game.addChild(this.samus);
             for (var enemy = constants.ENEMY_NUM; enemy > 0; enemy--) {
-                this.enemies[enemy] = new objects.Enemy();
+                this.enemies[enemy] = new objects.Enemy(this.scoreboard);
                 this.game.addChild(this.enemies[enemy]);
             }
-            this.scoreboard = new objects.ScoreBoard(this.game);
+            document.addEventListener("keydown", function (event) {
+                event.preventDefault(); //stops the page from scrolling down when space is pressed
+                play.samus.actionStart(event.keyCode); //send the plane the key that was pressed
+            });
             stage.addChild(this.game);
         } // constructor end
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -61,6 +67,9 @@ var states;
                             this.scoreboard.lives--;
                             break;
                     }
+                    switch (collider1.name) {
+                        case "enemy":
+                    }
                     if (hit1) {
                         collider1.hit();
                     }
@@ -85,6 +94,14 @@ var states;
                     this.enemies[enemy].update();
                     this.checkCollision(this.samus, true, this.enemies[enemy], true);
                 }
+                for (var laser = this.samus.totalLasers - 1; laser >= 0; laser--) {
+                    this.samus.lasers[laser].update();
+                    for (var enemy = constants.ENEMY_NUM; enemy > 0; enemy--) {
+                        if (this.samus.lasers[laser] != null) {
+                            this.checkCollision(this.enemies[enemy], true, this.samus.lasers[laser], true);
+                        }
+                    }
+                }
                 //collision between samus and ball
                 this.checkCollision(this.samus, false, this.ball, true);
             }
@@ -101,6 +118,8 @@ var states;
                 stateChanged = true;
             }
         }; // update method end
+        Play.prototype.fire = function () {
+        };
         return Play;
     })();
     states.Play = Play;

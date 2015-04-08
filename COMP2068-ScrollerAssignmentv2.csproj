@@ -60,7 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\audio\brinstar.mp3" />
+    <Content Include="assets\audio\enemy_explosion.wav" />
     <Content Include="assets\audio\explosion.wav" />
+    <Content Include="assets\audio\laser_sound.wav" />
     <Content Include="assets\audio\randomize.wav" />
     <Content Include="assets\audio\title.mp3" />
     <Content Include="assets\images\ball.png" />
@@ -68,7 +70,7 @@
     <Content Include="assets\images\gameoverScreen.png" />
     <Content Include="assets\images\hallway.png" />
     <Content Include="assets\images\howtoButton.png" />
-    <Content Include="assets\images\howtoScreen.png" />
+    <Content Include="assets\images\howtoScreen1.png" />
     <Content Include="assets\images\laser.png" />
     <Content Include="assets\images\playButton.png" />
     <Content Include="assets\images\playscreen.png" />

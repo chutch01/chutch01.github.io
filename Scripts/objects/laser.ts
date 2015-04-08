@@ -3,43 +3,48 @@
  */
 module objects {
     export class Laser extends objects.GameObject {
-
+        public _container: createjs.Container;
         public samus: objects.Samus;
-
         //constructor ++++++++++++++++++++++++++++
-        constructor(x: number, y: number, samus: objects.Samus) {
+        constructor(x: number, y: number, samus: objects.Samus, container: createjs.Container ) {
             super("laser");
+            this._dx = 5;
             this.x = x;
             this.y = y;
-            this.samus = samus;
-
-
             this.soundString = "laser_sound";
-
-
-
+            this.samus = samus;
+            this._container = container;
         }
 
         //public methods+++++++++++++++++++++++++++
-        public update() {
+        private _reset() {
+            
+            this._container.removeChild(this);
+            this.samus.lasers.splice(this.samus.lasers.indexOf(this), 1);
+            this.samus.totalLasers--;
+            
+        }
 
-            this.x += 5;
+        private _checkBounds() {
+            //console.log("checking bounds");
+            if (this.x >= 680 + this.width) {
+                this._reset();
 
-            if (this.x > 680) {
-
-             
-                this.samus.lasers.splice(this.samus.lasers.indexOf(this), 1);//remove a laser from the array
-                stage.removeChild(this);
             }
+        }
 
+
+        // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
+
+        public update() {
+            
+            this.x += 5;
+           // console.log("about to check bounds");
+            this._checkBounds();
         }
         public hit() {
-            console.log("laser exploded");
             createjs.Sound.play("enemyexplosion");
-            this.samus.totalLasers--; //decrease the number of lasers in game
-            this.samus.lasers.splice(this.samus.lasers.indexOf(this), 1);
-            stage.removeChild(this);
-
+            this._reset();
         }
 
     }
